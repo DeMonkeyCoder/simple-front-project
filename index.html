@@ -3,19 +3,17 @@
     <style>
         .title {
             color: white;
-            font: tahoma;
             font-weight: bold;
-            padding: 10px;
+            padding: 20px;
             font-size: 20px;
             text-align: center;
-            height: 50px;
             background-color: blue;
             border-radius: 10px 10px 0px 0px;
         }
         .header .block {
             margin: 10px auto;
         }
-        .main .block {
+        #main .block {
             margin: 10px;
             float: left;
         }
@@ -26,7 +24,7 @@
             width: 300px;
             background-color: white;
         }
-        .main {
+        #main {
             display: flex;
             flex-wrap: wrap;
         }
@@ -34,18 +32,36 @@
             padding: 10px;
             overflow-y: auto;
             height: 150px;
+            text-justify: auto;
         }
         body {
             background-color: #cccccc;
+            font-family: arial;
+        }
+        input[type=text] {
+            width: 90%;
         }
         textarea {
+            margin-top: 5px;
             width: 90%;
-            height: 90%;
+            height: 70%;
         }
         button {
             margin:10px;
         }
+        .remove-todo {
+            background-color: #ee0000;
+            color: #eeeeee;
+        }
+        .todo.completed .title,
+        .todo.completed .content{
+            text-decoration: line-through;
+        }
+        #settings {
+            text-align: center;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -54,98 +70,115 @@
                 New todo
             </div>
             <div class="content">
-                <textarea></textarea>
+                <input type="text"
+                placeholder="Title"
+                id="new-title" />
+                <textarea placeholder="Content"
+                id="new-content"
+                ></textarea>
             </div>
             <div class="actions">
-                <button class="add-btn">
+                <button id="add-todo">
                     Add todo
                 </button>
             </div>
         </div>
     </div>
-    <div class="main">
-        <div class="block">
+    <div id="settings">
+        <label for="show-all">
+            <input type="radio" name="display" id="show-all" value="show-all" checked />
+            all
+        </label>
+        <label for="show-completed">
+            <input type="radio" name="display" id="show-completed" value="show-completed" />
+            completed
+        </label>
+        <label for="show-not-completed">
+            <input type="radio" name="display" id="show-not-completed" value="show-not-completed" />
+            not completed
+        </label>
+    </div>
+
+    <div id="main">
+    </div>
+
+    <div id="sample" style="display:none">
+        <div class="block todo">
             <div class="title">
-                New todo
+                title
             </div>
             <div class="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.
+                content
             </div>
             <div class="actions">
-                <button class="add-btn">
+                <button class="done-todo">
                     Mark done
                 </button>
-                <button class="add-btn">
-                    Remove todo
-                </button>
-            </div>
-        </div>
-        <div class="block">
-            <div class="title">
-                New todo
-            </div>
-            <div class="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.
-            </div>
-            <div class="actions">
-                <button class="add-btn">
-                    Mark done
-                </button>
-                <button class="add-btn">
-                    Remove todo
-                </button>
-            </div>
-        </div>
-        <div class="block">
-            <div class="title">
-                New todo
-            </div>
-            <div class="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.
-            </div>
-            <div class="actions">
-                <button class="add-btn">
-                    Mark done
-                </button>
-                <button class="add-btn">
-                    Remove todo
-                </button>
-            </div>
-        </div>
-        <div class="block">
-            <div class="title">
-                New todo
-            </div>
-            <div class="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.
-            </div>
-            <div class="actions">
-                <button class="add-btn">
-                    Mark done
-                </button>
-                <button class="add-btn">
-                    Remove todo
-                </button>
-            </div>
-        </div>
-        <div class="block">
-            <div class="title">
-                New todo
-            </div>
-            <div class="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.
-            </div>
-            <div class="actions">
-                <button class="add-btn">
-                    Mark done
-                </button>
-                <button class="add-btn">
+                <button class="remove-todo">
                     Remove todo
                 </button>
             </div>
         </div>
     </div>
+
     <script>
-    
+        const sample_text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.";
+        
+        const addTodo = function(title, content){
+            $("#main").append(
+                $("#sample").html()
+            )
+            $("#main").children(".todo:last").children('.title').text(title);
+            $("#main").children(".todo:last").children('.content').text(content);
+        }
+
+        $(document).ready(function(){
+            addTodo('New todo',sample_text);
+            addTodo('New todo',sample_text);
+            addTodo('New todo',sample_text);
+            addTodo('New todo',sample_text);
+
+            $("#add-todo").click(function(){
+                if($("#new-title").val() == ''){
+                    alert("title can't be empty");
+                } else {
+                    addTodo(
+                        $("#new-title").val(),
+                        $("#new-content").val(),
+                    )
+                }
+            })
+
+            $(document).on('click', '.remove-todo', function(){
+                $(this).parent().parent().remove()
+            });
+
+            $(document).on('click', '.done-todo', function(){
+                let todo = $(this).parent().parent();
+                if(todo.hasClass('completed')){
+                    todo.removeClass('completed')
+                    if($("input[name=display]:checked").val() == "show-completed"){
+                        todo.hide();
+                    }
+                } else {
+                    todo.addClass('completed');
+                    if($("input[name=display]:checked").val() == "show-not-completed"){
+                        todo.hide();
+                    }
+                }
+            });
+
+            $("input[name=display]").click(function(){
+                if($(this).val() == "show-all"){
+                    $('.todo').show();
+                } else if($(this).val() == "show-completed"){
+                    $('.todo').hide();
+                    $('.todo.completed').show();
+                } else {
+                    $('.todo').show();
+                    $('.todo.completed').hide();
+                }
+            })
+        })
     </script>
 </body>
