@@ -32,7 +32,6 @@
             padding: 10px;
             overflow-y: auto;
             height: 150px;
-            text-justify: auto;
         }
         body {
             background-color: #cccccc;
@@ -86,15 +85,15 @@
     </div>
     <div id="settings">
         <label for="show-all">
-            <input type="radio" name="display" id="show-all" value="show-all" checked />
+            <input type="radio" name="what-to-show" id="show-all" value="show-all" checked />
             all
         </label>
         <label for="show-completed">
-            <input type="radio" name="display" id="show-completed" value="show-completed" />
+            <input type="radio" name="what-to-show" id="show-completed" value="show-completed" />
             completed
         </label>
         <label for="show-not-completed">
-            <input type="radio" name="display" id="show-not-completed" value="show-not-completed" />
+            <input type="radio" name="what-to-show" id="show-not-completed" value="show-not-completed" />
             not completed
         </label>
     </div>
@@ -123,6 +122,7 @@
 
     <script>
         const sample_text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.";
+        const sample_long_text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.";
         
         const addTodo = function(title, content){
             $("#main").append(
@@ -135,7 +135,7 @@
         $(document).ready(function(){
             addTodo('New todo',sample_text);
             addTodo('New todo',sample_text);
-            addTodo('New todo',sample_text);
+            addTodo('New todo',sample_long_text);
             addTodo('New todo',sample_text);
 
             $("#add-todo").click(function(){
@@ -157,18 +157,18 @@
                 let todo = $(this).parent().parent();
                 if(todo.hasClass('completed')){
                     todo.removeClass('completed')
-                    if($("input[name=display]:checked").val() == "show-completed"){
+                    if($("input[name=what-to-show]:checked").val() == "show-completed"){
                         todo.hide();
                     }
                 } else {
                     todo.addClass('completed');
-                    if($("input[name=display]:checked").val() == "show-not-completed"){
+                    if($("input[name=what-to-show]:checked").val() == "show-not-completed"){
                         todo.hide();
                     }
                 }
             });
 
-            $("input[name=display]").click(function(){
+            $("input[name=what-to-show]").click(function(){
                 if($(this).val() == "show-all"){
                     $('.todo').show();
                 } else if($(this).val() == "show-completed"){
