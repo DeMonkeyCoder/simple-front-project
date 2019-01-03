@@ -1,5 +1,5 @@
 # simple-front-project
-demo: https://alimahdiyar.github.io/simple-web-project/
+demo: https://alimahdiyar.github.io/simple-front-project/
 #### good resource for learning
 https://www.w3schools.com/
 #### What you need to know
