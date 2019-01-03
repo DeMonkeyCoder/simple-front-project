@@ -1,4 +1,4 @@
-# simple-web-project
+# simple-front-project
 demo: https://alimahdiyar.github.io/simple-web-project/
 #### good resource for learning
 https://www.w3schools.com/
