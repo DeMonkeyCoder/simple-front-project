@@ -6,7 +6,7 @@ https://www.w3schools.com/
 #### html
 div, input, textarea, button
 #### css
-color, font (and related properties), text-align, text-decoration, padding, margin, backgroud-color, border-rardius, float, display, flex-wrap, overflow, width, height, 
+color, font (and related properties), text-align, text-decoration, padding, margin, backgroud-color, border-rardius, float, display, flex-wrap, overflow, width, height
 #### javascript
 basic syntax, variables, functions
 #### jquery functions / events
