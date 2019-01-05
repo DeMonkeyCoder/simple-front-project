@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .title {
             color: white;
@@ -25,6 +26,7 @@
             background-color: white;
         }
         #main {
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
         }
@@ -59,8 +61,13 @@
         #settings {
             text-align: center;
         }
+
+        @media only screen and (max-width: 1295px){
+            #main .block {
+                margin: 10px auto;
+            }
+        }
     </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -120,6 +127,7 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         const sample_text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.";
         const sample_long_text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit distinctio, nisi officiis voluptatum facere animi a molestias, asperiores eum aliquam ratione dignissimos. Sed quas officia reiciendis maiores sunt, asperiores temporibus.";
