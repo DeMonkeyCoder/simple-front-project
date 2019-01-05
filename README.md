@@ -1,7 +1,7 @@
 # simple-front-project
 demo: https://alimahdiyar.github.io/simple-front-project/
 #### good resource for learning
-http://javascript.info/first-steps
+http://javascript.info/first-steps  
 https://www.w3schools.com/ (html, css, jquery)
 #### What you need to know
 #### html
