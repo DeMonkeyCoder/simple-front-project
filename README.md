@@ -8,6 +8,7 @@ https://www.w3schools.com/ (html, css, jquery)
 div, input, textarea, button
 #### css
 color, width, height, font (and related properties), text-align, text-decoration, padding, margin, backgroud-color, border-rardius, float, display, flex-wrap, overflow
+media queries and responsive design (full chapter of https://www.w3schools.com/css/css_rwd_intro.asp)
 #### javascript
 basic syntax, variables, functions
 #### jquery functions / events
